@@ -1,0 +1,1 @@
+export { TVShowDetails } from "./TVShowDetails";
