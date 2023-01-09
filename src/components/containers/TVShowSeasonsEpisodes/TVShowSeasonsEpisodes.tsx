@@ -1,17 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { CollapsibleComponent } from "../../common/Collapsible";
-import { TVShowSeasonEpisode } from "./TVShowSeasonsEpisodesTypes";
+import { Link } from "react-router-dom";
+import {
+  TVShowSeasonEpisode,
+  TVShowSeasonEpisodeProps,
+} from "./TVShowSeasonsEpisodesTypes";
 import { _TVShowSeasonsEpisodes } from "./_TVShowSeasonsEpisodes";
 
-export const TVShowSeasonsEpisodes = () => {
+export const TVShowSeasonsEpisodes = ({
+  seasonNumber,
+}: TVShowSeasonEpisodeProps) => {
   const [episode, setEpisode] = useState<TVShowSeasonEpisode[]>();
-  console.log(episode);
 
-  const episodesUrl = "https://api.tvmaze.com/seasons/7073/episodes";
-
-  //episodios da season
-  // "https://api.tvmaze.com/seasons/7073/episodes" "https://api.tvmaze.com/shows/1955/episodes";
+  const episodesUrl = `https://api.tvmaze.com/seasons/${seasonNumber}/episodes`;
 
   const getEpisodes = async () => {
     let result = await axios.get(episodesUrl);
@@ -24,12 +25,16 @@ export const TVShowSeasonsEpisodes = () => {
 
   return (
     <_TVShowSeasonsEpisodes>
-      <CollapsibleComponent>
-        {episode &&
-          episode?.map((episode) => {
-            return <section className="episodeBox">{episode.number}</section>;
-          })}
-      </CollapsibleComponent>
+      {episode &&
+        episode?.map((episode) => {
+          return (
+            <Link to={`/details/${seasonNumber}/${episode.number}`}>
+              <section key={episode.number} className="episodeBox">
+                {episode.number}
+              </section>
+            </Link>
+          );
+        })}
     </_TVShowSeasonsEpisodes>
   );
 };

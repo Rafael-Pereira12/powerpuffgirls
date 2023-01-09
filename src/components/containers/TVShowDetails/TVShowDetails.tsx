@@ -20,15 +20,17 @@ export const TVShowDetails = () => {
   return (
     <Wrapper>
       {show && (
-        <article>
-          <figure>
+        <>
+          <figure className="image">
             <img src={show.image.medium} alt="Series Poster" />
           </figure>
-          <h5>Title: {show.name}</h5>
-          <h5>Description: {show.summary.replace(/(<([^>]+)>)/gi, " ")}</h5>
-          <h5>Type: {show.type}</h5>
-          <h5>Rating: {show.rating.average}</h5>
-        </article>
+          <h5 className="title">Title: {show.name}</h5>
+          <h5 className="description">
+            Description: {show.summary.replace(/(<([^>]+)>)/gi, " ")}
+          </h5>
+          <h5 className="type">Type: {show.type}</h5>
+          <h5 className="rating">Rating: {show.rating.average}</h5>
+        </>
       )}
     </Wrapper>
   );

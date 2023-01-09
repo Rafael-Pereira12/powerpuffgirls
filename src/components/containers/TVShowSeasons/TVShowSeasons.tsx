@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Season } from "./TVShowSeasonsTypes";
 import { _TVShowSeasons } from "./_TVShowSeasons";
 import { TVShowSeasonsEpisodes } from "../TVShowSeasonsEpisodes/TVShowSeasonsEpisodes";
+import { CollapsibleComponent } from "../../common/Collapsible";
 
 export const TVShowSeasons = () => {
   const [showSeasons, setShowSeason] = useState<Season[]>();
@@ -22,9 +23,12 @@ export const TVShowSeasons = () => {
     <_TVShowSeasons>
       {showSeasons &&
         showSeasons?.map((season) => {
-          return <article className="seasonBox">{season?.number}</article>;
+          return (
+            <CollapsibleComponent number={season?.number}>
+              <TVShowSeasonsEpisodes seasonNumber={season?.number} />
+            </CollapsibleComponent>
+          );
         })}
-      <TVShowSeasonsEpisodes />
     </_TVShowSeasons>
   );
 };

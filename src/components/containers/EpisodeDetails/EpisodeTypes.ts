@@ -8,3 +8,9 @@ export type EpisodeDetail = {
   summary: string
   type: string
 }
+
+export type EpisodeDetailProps = {
+  number: number
+  season: number
+
+}

@@ -1,15 +1,18 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import EpisodeDetailsPage from "./pages/EpisodeDetailsPage"; 
-import TVShowDetailsPage from "./pages/TVShowDetailsPage"; 
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
+import EpisodeDetailsPage from "./pages/EpisodeDetailsPage";
+import TVShowDetailsPage from "./pages/TVShowDetailsPage";
 
 function App() {
   return (
-      <BrowserRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<TVShowDetailsPage />} />
-        <Route path="/details/:id" element={<EpisodeDetailsPage />} />
+        <Route
+          path="/details/:season/:number"
+          element={<EpisodeDetailsPage />}
+        />
       </Routes>
-      </BrowserRouter> 
+    </BrowserRouter>
   );
 }
 
