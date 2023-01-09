@@ -25,7 +25,10 @@ export const TVShowSeasons = () => {
         showSeasons?.map((season) => {
           return (
             <CollapsibleComponent number={season?.number}>
-              <TVShowSeasonsEpisodes seasonNumber={season?.number} />
+              <TVShowSeasonsEpisodes
+                seasonNumber={season?.number}
+                id={season.id}
+              />
             </CollapsibleComponent>
           );
         })}

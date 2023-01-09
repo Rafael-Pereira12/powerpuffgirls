@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { TVShowDetail } from "../../containers/TVShowDetails/TVShowDetailsTypes";
-import { Wrapper } from "../../common/Wrapper";
+import { _TVShowDetails } from "./_TVShowDetails";
 
 export const TVShowDetails = () => {
   const [show, setShow] = useState<TVShowDetail>();
@@ -18,20 +18,29 @@ export const TVShowDetails = () => {
   }, []);
 
   return (
-    <Wrapper>
+    <_TVShowDetails>
       {show && (
         <>
           <figure className="image">
             <img src={show.image.medium} alt="Series Poster" />
           </figure>
-          <h5 className="title">Title: {show.name}</h5>
-          <h5 className="description">
-            Description: {show.summary.replace(/(<([^>]+)>)/gi, " ")}
-          </h5>
-          <h5 className="type">Type: {show.type}</h5>
-          <h5 className="rating">Rating: {show.rating.average}</h5>
+          <article className="title">
+            <h5>Title</h5>
+            <h3>{show.name}</h3>
+          </article>
+          <article className="description">
+            <h4>{show.summary.replace(/(<([^>]+)>)/gi, " ")}</h4>
+          </article>
+          <article className="type">
+            <h5>Type</h5>
+            <h3>{show.type}</h3>
+          </article>
+          <article className="rating">
+            <h5>Rating</h5>
+            <h3>{show.rating.average}</h3>
+          </article>
         </>
       )}
-    </Wrapper>
+    </_TVShowDetails>
   );
 };

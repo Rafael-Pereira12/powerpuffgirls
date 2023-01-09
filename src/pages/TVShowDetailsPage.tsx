@@ -5,7 +5,7 @@ import { TVShowSeasons } from "../components/containers/TVShowSeasons/TVShowSeas
 const TVShowDetailsPage = () => {
   return (
     <>
-      <Header title="Show Details" />
+      <Header title="TV Show Details" />
       <TVShowDetails />
       <TVShowSeasons />
     </>

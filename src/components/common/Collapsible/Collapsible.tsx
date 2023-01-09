@@ -7,10 +7,10 @@ export const CollapsibleComponent = (props: any) => {
 
   return (
     <_Collapsible>
-      <section className={!isOpen ? "card cardCollapsed" : "card"}>
+      <section className={!isOpen ? "cardCollapsed" : "card"}>
         <section className="seasonContainer">
           <h5>SEASON {props.number}</h5>
-          <section>
+          <section className="btnContainer">
             <button onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <FaChevronUp /> : <FaChevronDown />}
             </button>

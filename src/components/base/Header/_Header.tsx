@@ -7,4 +7,5 @@ export const _Header = styled.section`
   align-items: center;
   height: 8rem;
   font-size: 45px;
+  text-decoration: underline;
 `;

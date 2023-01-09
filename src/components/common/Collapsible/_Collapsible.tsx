@@ -22,6 +22,8 @@ export const _Collapsible = styled.section`
     justify-content: space-around;
     border-radius: 5px;
     border: solid 2px black;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
   }
 
   .episodeContainer {
@@ -29,19 +31,24 @@ export const _Collapsible = styled.section`
     padding-top: 12px;
     padding-bottom: 12px;
     justify-content: center;
+    display: flex;
   }
 
   .seasonContainer,
   .episodeContainer {
     height: fit-content;
     text-align: center;
+  }
+
+  .btnContainer {
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   button {
     background: none;
     border: none;
-    justify-self: end;
   }
 
   button > svg {

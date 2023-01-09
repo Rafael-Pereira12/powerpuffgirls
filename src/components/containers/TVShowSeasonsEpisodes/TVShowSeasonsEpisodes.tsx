@@ -9,10 +9,11 @@ import { _TVShowSeasonsEpisodes } from "./_TVShowSeasonsEpisodes";
 
 export const TVShowSeasonsEpisodes = ({
   seasonNumber,
+  id,
 }: TVShowSeasonEpisodeProps) => {
   const [episode, setEpisode] = useState<TVShowSeasonEpisode[]>();
 
-  const episodesUrl = `https://api.tvmaze.com/seasons/${seasonNumber}/episodes`;
+  const episodesUrl = `https://api.tvmaze.com/seasons/${id}/episodes`;
 
   const getEpisodes = async () => {
     let result = await axios.get(episodesUrl);
@@ -22,6 +23,7 @@ export const TVShowSeasonsEpisodes = ({
   useEffect(() => {
     getEpisodes();
   }, []);
+  console.log("episode: ", episode);
 
   return (
     <_TVShowSeasonsEpisodes>

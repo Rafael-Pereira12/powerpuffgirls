@@ -1,7 +1,7 @@
 import axios from "axios";
+import { _EpisodeDetails } from "./_EpisodeDetails";
 import { EpisodeDetail, EpisodeDetailProps } from "./EpisodeTypes";
 import { useEffect, useState } from "react";
-import { Wrapper } from "../../common/Wrapper";
 
 export const EpisodeDetails = ({ season, number }: EpisodeDetailProps) => {
   const [episode, setEpisode] = useState<EpisodeDetail>();
@@ -11,7 +11,6 @@ export const EpisodeDetails = ({ season, number }: EpisodeDetailProps) => {
   const getEpisodeDetails = async () => {
     let result = await axios.get(episodeDetailsUrl);
     setEpisode(result.data);
-    console.log("episode: ", episode);
   };
 
   useEffect(() => {
@@ -19,23 +18,41 @@ export const EpisodeDetails = ({ season, number }: EpisodeDetailProps) => {
   }, []);
 
   return (
-    <Wrapper>
+    <_EpisodeDetails>
       {episode && (
-        <article>
+        <>
           <figure className="image">
             <img src={episode.image.medium} alt="Series Poster" />
           </figure>
-          <h5>Season {episode.season}</h5>
-          <h5 className="title">Title: {episode.name}</h5>
-          <h5>Episode {episode.number}</h5>
-          <h5>Airdate: {episode.airdate}</h5>
-          <h5 className="type">Type {episode.type}</h5>
-          <h5 className="">Runtime: {episode.name}</h5>
-          <h5 className="description">
-            Description: {episode.summary.replace(/(<([^>]+)>)/gi, " ")}
-          </h5>
-        </article>
+          <article className="season">
+            <h5>Season</h5>
+            <h3>{episode.season}</h3>
+          </article>
+          <article className="title">
+            <h5>Title</h5>
+            <h3>{episode.name}</h3>
+          </article>
+          <article className="episode">
+            <h5>Episode</h5>
+            <h3>{episode.number}</h3>
+          </article>
+          <article className="airdate">
+            <h5>Airdate</h5>
+            <h3>{episode.airdate}</h3>
+          </article>
+          <article className="type">
+            <h5>Type</h5>
+            <h3>{episode.type}</h3>
+          </article>
+          <article className="runtime">
+            <h5>Runtime</h5>
+            <h3>{episode.runtime}</h3>
+          </article>
+          <article className="description">
+            <h4>{episode.summary.replace(/(<([^>]+)>)/gi, " ")}</h4>
+          </article>
+        </>
       )}
-    </Wrapper>
+    </_EpisodeDetails>
   );
 };
