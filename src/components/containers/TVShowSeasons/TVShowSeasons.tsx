@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { CollapsibleComponent } from "../../common/Collapsible";
 import { Season } from "./TVShowSeasonsTypes";
 import { _TVShowSeasons } from "./_TVShowSeasons";
 import { TVShowSeasonsEpisodes } from "../TVShowSeasonsEpisodes/TVShowSeasonsEpisodes";
-import { CollapsibleComponent } from "../../common/Collapsible";
+import { useEffect, useState } from "react";
+import { useGlobalContext } from "../../../context/globalContext";
 
 export const TVShowSeasons = () => {
+  const { setSeasonDetails } = useGlobalContext();
   const [showSeasons, setShowSeason] = useState<Season[]>();
 
   const seasonUrl = "https://api.tvmaze.com/shows/1955/seasons";
@@ -13,6 +15,7 @@ export const TVShowSeasons = () => {
   const getSeasons = async () => {
     let result = await axios.get(seasonUrl);
     setShowSeason(result.data);
+    setSeasonDetails(result.data);
   };
 
   useEffect(() => {
@@ -25,10 +28,7 @@ export const TVShowSeasons = () => {
         showSeasons?.map((season) => {
           return (
             <CollapsibleComponent number={season?.number}>
-              <TVShowSeasonsEpisodes
-                seasonNumber={season?.number}
-                id={season.id}
-              />
+              <TVShowSeasonsEpisodes number={season?.number} />
             </CollapsibleComponent>
           );
         })}

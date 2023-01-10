@@ -7,19 +7,11 @@ export const _Collapsible = styled.section`
 
   .card {
     width: 30rem;
-    height: fit-content;
-    transition: height 0.3s, linear 0.3s;
-  }
-
-  .cardCollapsed {
-    width: 30rem;
-    height: 4rem;
   }
 
   .seasonContainer {
     background-color: #9bbb88;
     margin-top: 2px;
-    justify-content: space-around;
     border-radius: 5px;
     border: solid 2px black;
     display: grid;
@@ -36,7 +28,6 @@ export const _Collapsible = styled.section`
 
   .seasonContainer,
   .episodeContainer {
-    height: fit-content;
     text-align: center;
   }
 

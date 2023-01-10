@@ -4,6 +4,7 @@ export const _TVShowSeasonsEpisodes = styled.section`
   display: flex;
   flex-wrap: wrap;
   text-decoration: none;
+  justify-content: center;
 
   .episodeBox {
     background-color: rebeccapurple;

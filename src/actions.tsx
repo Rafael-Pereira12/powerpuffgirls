@@ -1,0 +1,1 @@
+export const SET_SEASON_DETAILS = "SET_SEASON_DETAILS";
