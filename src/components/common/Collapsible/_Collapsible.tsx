@@ -40,6 +40,7 @@ export const _Collapsible = styled.section`
   button {
     background: none;
     border: none;
+    cursor: pointer;
   }
 
   button > svg {

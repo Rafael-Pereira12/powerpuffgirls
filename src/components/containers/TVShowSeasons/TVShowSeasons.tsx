@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 import { useGlobalContext } from "../../../context/globalContext";
 
 export const TVShowSeasons = () => {
-  const { setSeasonDetails } = useGlobalContext();
+  const { currentSlide, setSeasonDetails } = useGlobalContext();
   const [showSeasons, setShowSeason] = useState<Season[]>();
+  console.log("currentSlide: ", currentSlide);
 
   const seasonUrl = "https://api.tvmaze.com/shows/1955/seasons";
 
@@ -25,11 +26,15 @@ export const TVShowSeasons = () => {
   return (
     <_TVShowSeasons>
       {showSeasons &&
-        showSeasons?.map((season) => {
+        showSeasons?.map((season, index) => {
           return (
-            <CollapsibleComponent number={season?.number}>
-              <TVShowSeasonsEpisodes number={season?.number} />
-            </CollapsibleComponent>
+            <div className={index === currentSlide ? "slideActive" : "slide"}>
+              {index === currentSlide && (
+                <CollapsibleComponent number={season?.number}>
+                  <TVShowSeasonsEpisodes number={season?.number} />
+                </CollapsibleComponent>
+              )}
+            </div>
           );
         })}
     </_TVShowSeasons>
