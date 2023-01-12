@@ -5,7 +5,13 @@ export const _Header = styled.section`
   padding-bottom: 30px;
   justify-content: center;
   align-items: center;
-  height: 8rem;
+  height: 6rem;
   font-size: 45px;
-  text-decoration: underline;
+  font-family: Fenixhea;
+  color: #020284;
+  text-shadow: #fc0 1px 0 10px;
+
+  @media screen and (max-width: 540px) {
+    font-size: 55px;
+  }
 `;

@@ -14,6 +14,8 @@ export const TVShowSeasonsEpisodes = ({ number }: TVShowSeasonEpisode) => {
   //@ts-ignore
   const episodesUrl = `https://api.tvmaze.com/seasons/${seasonDetails?.[index].id}/episodes`;
 
+  //uses the variable episodeUrl to request the data to the API,
+  //than sets the response data with a hook in order to render the information on the page
   const getEpisodes = async () => {
     let result = await axios.get(episodesUrl);
     setEpisode(result.data);

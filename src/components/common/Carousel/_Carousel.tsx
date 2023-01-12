@@ -6,21 +6,12 @@ export const _Carousel = styled.section`
   justify-content: center;
   align-items: center;
 
-  .rightArrow {
-    position: absolute;
-    top: 50%;
-    right: 32px;
-  }
-
-  .leftArrow {
-    position: absolute;
-    top: 50%;
-    left: 32px;
-  }
-
   .rightArrow,
   .leftArrow {
+    position: sticky;
     cursor: pointer;
     z-index: 10;
+    height: 2em;
+    width: 2em;
   }
 `;

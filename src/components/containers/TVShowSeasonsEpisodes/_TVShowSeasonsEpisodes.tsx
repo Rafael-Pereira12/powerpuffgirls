@@ -7,8 +7,9 @@ export const _TVShowSeasonsEpisodes = styled.section`
   justify-content: center;
 
   .episodeBox {
-    background-color: rebeccapurple;
-    width: 2rem;
+    background: linear-gradient(0deg, #663399 0%, #010142 100%);
+
+    width: 5rem;
     justify-content: center;
     text-align: center;
     border-radius: 5px;

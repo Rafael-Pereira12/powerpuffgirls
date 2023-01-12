@@ -1,21 +1,39 @@
 import styled from "styled-components";
 
 export const _EpisodeDetails = styled.section`
-  display: grid;
-  grid-template-areas:
-    "image image image image image image"
-    "season season episode episode runtime runtime"
-    "title title type type airdate airdate"
-    "description description description description description description";
-  gap: 10px;
-  justify-content: center;
-  align-content: center;
-  text-decoration: none;
-  text-align: center;
-  margin-bottom: 2rem;
+  .grid {
+    display: grid;
+    grid-template-areas:
+      " image image image image  image image"
+      "title title title title title title"
+      "episode episode season season runtime runtime "
+      " type type type airdate airdate airdate"
+      " description description description description description  description";
+    gap: 5px;
+    justify-content: center;
+    align-content: center;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  .back {
+    margin-left: 15rem;
+  }
+
+  a:link,
+  a:visited {
+    color: white;
+    text-decoration: underline;
+  }
 
   .image {
     grid-area: image;
+  }
+
+  .image > img {
+    height: 20rem;
   }
 
   .title {
@@ -48,8 +66,26 @@ export const _EpisodeDetails = styled.section`
   }
 
   img {
-    border: solid 2px white;
+    border: solid 2px #e8d487;
     border-radius: 15px;
-    box-shadow: 0px 0px 25px -4px white;
+    box-shadow: 0px 0px 10px 0px #fc0;
+  }
+
+  @media screen and (max-width: 414px) {
+    .image > img {
+      height: 10rem;
+    }
+
+    .description {
+      margin: 0px 15px 0px 15px;
+    }
+
+    .description > h4 {
+      font-size: 15px;
+    }
+
+    .back {
+      margin-left: 2rem;
+    }
   }
 `;

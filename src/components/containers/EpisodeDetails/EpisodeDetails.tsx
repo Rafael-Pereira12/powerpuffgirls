@@ -1,6 +1,7 @@
 import axios from "axios";
 import { _EpisodeDetails } from "./_EpisodeDetails";
 import { EpisodeDetail, EpisodeDetailProps } from "./EpisodeTypes";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export const EpisodeDetails = ({ season, number }: EpisodeDetailProps) => {
@@ -8,6 +9,8 @@ export const EpisodeDetails = ({ season, number }: EpisodeDetailProps) => {
 
   const episodeDetailsUrl = `https://api.tvmaze.com/shows/1955/episodebynumber?season=${season}&number=${number}`;
 
+  //uses the variable episodeDetailsUrl to request the data to the API,
+  //than sets the response data with a hook in order to render the information on the page
   const getEpisodeDetails = async () => {
     let result = await axios.get(episodeDetailsUrl);
     setEpisode(result.data);
@@ -19,8 +22,11 @@ export const EpisodeDetails = ({ season, number }: EpisodeDetailProps) => {
 
   return (
     <_EpisodeDetails>
+      <section className="back">
+        <Link to={"/"}>Back to Show Details</Link>
+      </section>
       {episode && (
-        <>
+        <section className="grid">
           <figure className="image">
             <img src={episode.image.medium} alt="Series Poster" />
           </figure>
@@ -49,9 +55,10 @@ export const EpisodeDetails = ({ season, number }: EpisodeDetailProps) => {
             <h3>{episode.runtime}</h3>
           </article>
           <article className="description">
+            <h3>Episode Description</h3>
             <h4>{episode.summary.replace(/(<([^>]+)>)/gi, " ")}</h4>
           </article>
-        </>
+        </section>
       )}
     </_EpisodeDetails>
   );

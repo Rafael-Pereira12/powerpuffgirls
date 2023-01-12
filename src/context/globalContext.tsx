@@ -1,4 +1,4 @@
-import { SET_SLIDE, SET_SEASON_DETAILS } from "../actions";
+import { SET_SLIDE, SET_SEASON_DETAILS, SET_VIEW_EPISODES } from "../actions";
 import React, { useCallback, useContext, useReducer } from "react";
 import reducer from "../reducer/globalReducer";
 import { Season } from "../components/containers/TVShowSeasons/TVShowSeasonsTypes";
@@ -9,14 +9,17 @@ const initialState = {
     id: 0,
   },
   currentSlide: 0,
+  viewEpisodes: false,
 };
 
 const GlobalContext = React.createContext<{
   setNextSlide: Function;
   setPreviousSlide: Function;
   setSeasonDetails: Function;
-  seasonDetails: Season;
+  seasonDetails: Season | Season[];
   currentSlide: number;
+  viewEpisodes: false;
+  setViewEpisodes: Function;
 }>({
   setNextSlide: () => {},
   setPreviousSlide: () => {},
@@ -26,6 +29,8 @@ const GlobalContext = React.createContext<{
     id: 0,
   },
   currentSlide: 0,
+  viewEpisodes: false,
+  setViewEpisodes: () => {},
 });
 
 export const GlobalProvider = ({ children }: any) => {
@@ -43,6 +48,10 @@ export const GlobalProvider = ({ children }: any) => {
     dispatch({ type: SET_SLIDE, payload: currentSlide });
   }, []);
 
+  const setViewEpisodes = useCallback((viewEpisodes: boolean) => {
+    dispatch({ type: SET_VIEW_EPISODES, payload: viewEpisodes });
+  }, []);
+
   return (
     <GlobalContext.Provider
       value={{
@@ -50,6 +59,7 @@ export const GlobalProvider = ({ children }: any) => {
         setNextSlide,
         setPreviousSlide,
         setSeasonDetails,
+        setViewEpisodes,
       }}
     >
       {children}

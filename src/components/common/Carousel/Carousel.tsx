@@ -1,10 +1,12 @@
 import { _Carousel } from "./_Carousel";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { useGlobalContext } from "../../../context/globalContext";
-import React from "react";
 
 export const Carousel = (props: any) => {
-  const { currentSlide, setNextSlide, setPreviousSlide } = useGlobalContext();
+  const { currentSlide, setNextSlide, setPreviousSlide, seasonDetails } =
+    useGlobalContext();
+
+  const seasonCount = Object.values(seasonDetails).length - 1;
 
   return (
     <_Carousel>
@@ -12,7 +14,7 @@ export const Carousel = (props: any) => {
         className="leftArrow"
         onClick={() =>
           setPreviousSlide(
-            currentSlide === 0 ? currentSlide + 5 : currentSlide - 1
+            currentSlide === 0 ? currentSlide + seasonCount : currentSlide - 1
           )
         }
       />
@@ -21,7 +23,11 @@ export const Carousel = (props: any) => {
       <FaChevronRight
         className="rightArrow"
         onClick={() =>
-          setNextSlide(currentSlide === 5 ? currentSlide - 5 : currentSlide + 1)
+          setNextSlide(
+            currentSlide === seasonCount
+              ? currentSlide - seasonCount
+              : currentSlide + 1
+          )
         }
       />
     </_Carousel>

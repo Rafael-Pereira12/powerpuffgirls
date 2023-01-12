@@ -8,6 +8,8 @@ export const TVShowDetails = () => {
 
   const showUrl = "https://api.tvmaze.com/shows/1955";
 
+  //uses the variable showUrl to request the data to the API,
+  //than sets the response data with a hook in order to render the information on the page
   const getShowDetails = async () => {
     let result = await axios.get(showUrl);
     setShow(result.data);
